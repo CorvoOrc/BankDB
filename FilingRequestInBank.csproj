@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D94C67E1-EC20-49F2-80F5-51031FD3C7C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingRequestInBank</RootNamespace>
+    <AssemblyName>FilingRequestInBank</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bank.Designer.cs">
+      <DependentUpon>Bank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bank_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bank_client.Designer.cs">
+      <DependentUpon>Bank_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bank_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bank_create.Designer.cs">
+      <DependentUpon>Bank_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Family.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Family.Designer.cs">
+      <DependentUpon>Family.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Family_member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Family_member.Designer.cs">
+      <DependentUpon>Family_member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JoinBP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JoinBP.Designer.cs">
+      <DependentUpon>JoinBP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager.Designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager_client.Designer.cs">
+      <DependentUpon>Manager_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager_create.Designer.cs">
+      <DependentUpon>Manager_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partner.Designer.cs">
+      <DependentUpon>Partner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partner_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partner_client.Designer.cs">
+      <DependentUpon>Partner_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partner_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partner_create.Designer.cs">
+      <DependentUpon>Partner_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personal.Designer.cs">
+      <DependentUpon>Personal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personal_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personal_client.Designer.cs">
+      <DependentUpon>Personal_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personal_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personal_create.Designer.cs">
+      <DependentUpon>Personal_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bank.resx">
+      <DependentUpon>Bank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bank_client.resx">
+      <DependentUpon>Bank_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bank_create.resx">
+      <DependentUpon>Bank_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Family.resx">
+      <DependentUpon>Family.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Family_member.resx">
+      <DependentUpon>Family_member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JoinBP.resx">
+      <DependentUpon>JoinBP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager_client.resx">
+      <DependentUpon>Manager_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager_create.resx">
+      <DependentUpon>Manager_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partner.resx">
+      <DependentUpon>Partner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partner_client.resx">
+      <DependentUpon>Partner_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partner_create.resx">
+      <DependentUpon>Partner_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personal.resx">
+      <DependentUpon>Personal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personal_client.resx">
+      <DependentUpon>Personal_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personal_create.resx">
+      <DependentUpon>Personal_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query1.resx">
+      <DependentUpon>Query1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query2.resx">
+      <DependentUpon>Query2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query3.resx">
+      <DependentUpon>Query3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query4.resx">
+      <DependentUpon>Query4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query5.resx">
+      <DependentUpon>Query5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query6.resx">
+      <DependentUpon>Query6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query_menu.resx">
+      <DependentUpon>Query_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Question.resx">
+      <DependentUpon>Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Request.resx">
+      <DependentUpon>Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Request_client.resx">
+      <DependentUpon>Request_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Request_create.resx">
+      <DependentUpon>Request_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service.resx">
+      <DependentUpon>Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service_client.resx">
+      <DependentUpon>Service_client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service_create.resx">
+      <DependentUpon>Service_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Query1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query1.Designer.cs">
+      <DependentUpon>Query1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query2.Designer.cs">
+      <DependentUpon>Query2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query3.Designer.cs">
+      <DependentUpon>Query3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query4.Designer.cs">
+      <DependentUpon>Query4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query5.Designer.cs">
+      <DependentUpon>Query5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query6.Designer.cs">
+      <DependentUpon>Query6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query_menu.Designer.cs">
+      <DependentUpon>Query_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Question.Designer.cs">
+      <DependentUpon>Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Request.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Request.Designer.cs">
+      <DependentUpon>Request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Request_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Request_client.Designer.cs">
+      <DependentUpon>Request_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Request_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Request_create.Designer.cs">
+      <DependentUpon>Request_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service.Designer.cs">
+      <DependentUpon>Service.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service_client.Designer.cs">
+      <DependentUpon>Service_client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service_create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service_create.Designer.cs">
+      <DependentUpon>Service_create.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
