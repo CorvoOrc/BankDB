@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private string surname, name, patronymic, telephone, sex, birthday;
         private int age;
         int Id_personal;
+        
         public Personal()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -33,6 +35,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday, Id_personal FROM Personal";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -52,6 +55,7 @@ namespace FilingRequestInBank
 
             if (!f.access)
                 return;
+                
             surname = f.surname;
             name = f.name;
             patronymic = f.patronymic;
@@ -70,6 +74,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Personal(Surname, Name, Patronymic, Telephone, Age, Sex, Birthday) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", surname, name, patronymic, telephone, age, sex, birthday);
@@ -81,6 +86,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday, Id_personal FROM Personal";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
@@ -107,6 +113,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_personal = (int)dataGridView1.CurrentRow.Cells[7].Value;
@@ -120,6 +127,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday, Id_personal FROM Personal";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
@@ -158,6 +166,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_personal = (int)dataGridView1.CurrentRow.Cells[7].Value;
@@ -173,6 +182,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday, Id_personal FROM Personal";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
