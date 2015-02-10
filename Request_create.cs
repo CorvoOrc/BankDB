@@ -22,9 +22,11 @@ namespace FilingRequestInBank
         private BindingSource bind2 = new BindingSource();
         private DataSet dataset2 = new DataSet();
         public bool access = false;
+        
         public Request_create()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -37,6 +39,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday, Id_personal FROM Personal";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -84,20 +87,25 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Не выбран Клиент!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
             Id_personal = (int)dataGridView1.CurrentRow.Cells[7].Value;
+            
             if (dataGridView2.CurrentRow == null)
             {
                 access = false;
                 MessageBox.Show(@"Не выбрана Усдуга!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
             Id_service = (int)dataGridView2.CurrentRow.Cells[4].Value;
+            
             if (dataGridView3.CurrentRow == null)
             {
                 access = false;
                 MessageBox.Show(@"Не выбран Менеджер!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
             Id_meneger = (int)dataGridView3.CurrentRow.Cells[5].Value;
 
             if (job == "")
