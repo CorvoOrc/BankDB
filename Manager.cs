@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private string surname, name, patronymic;
         private int age;
         private int Id_bank, Id_manager;
+        
         public Manager()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -54,6 +56,7 @@ namespace FilingRequestInBank
 
              if (!dialog.access)
                 return;
+                
             surname = dialog.surname;
             name = dialog.name;
             patronymic = dialog.pantonymic;
@@ -100,6 +103,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             surname = dialog.surname;
             name = dialog.name;
             patronymic = dialog.pantonymic;
@@ -114,6 +118,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_manager = (int)dataGridView1.CurrentRow.Cells[4].Value;
@@ -154,6 +159,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_manager = (int)dataGridView1.CurrentRow.Cells[4].Value;
