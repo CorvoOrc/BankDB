@@ -52,7 +52,7 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Не заполенено поле 'Адрес'!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (telephone== "")
+            if (telephone == "")
             {
                 access = false;
                 MessageBox.Show(@"Не заполенено поле 'Телефон'!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
