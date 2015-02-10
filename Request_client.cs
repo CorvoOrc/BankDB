@@ -24,10 +24,12 @@ namespace FilingRequestInBank
         public string job, salary, contact;
         public string family_member, activities,surname;
         public int age;
-        public bool acc = false;
+        public bool acc = false
+        
         public Request_client()
         {
             InitializeComponent();
+            
             FileInfo fi1 = new FileInfo("service.txt");
             using (StreamReader sr = fi1.OpenText())
             {
@@ -36,6 +38,7 @@ namespace FilingRequestInBank
                 sr.Close();
                 Id_service = Convert.ToInt32(s);
             }
+            
             FileInfo fi2 = new FileInfo("manager.txt");
             using (StreamReader sr = fi2.OpenText())
             {
@@ -44,6 +47,7 @@ namespace FilingRequestInBank
                 sr.Close();
                 Id_manager = Convert.ToInt32(s);
             }
+            
             FileInfo fi3 = new FileInfo("personal.txt");
             using (StreamReader sr = fi3.OpenText())
             {
@@ -52,6 +56,7 @@ namespace FilingRequestInBank
                 sr.Close();
                 Id_personal = Convert.ToInt32(s);
             }
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -81,6 +86,7 @@ namespace FilingRequestInBank
                     MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 try
                 {
                     string strSql1 =  String.Format("INSERT INTO Family(Surname) VALUES ('{0}')", surname);
@@ -92,7 +98,6 @@ namespace FilingRequestInBank
                     MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
 
                 string str1 = "SELECT Surname,Id_family FROM Family";
                 SqlCommand cm = new SqlCommand(str1, cn);
@@ -118,6 +123,7 @@ namespace FilingRequestInBank
 
             if (!f.access)
                 return;
+                
             family_member = f.family_member;
             activities = f.activities;
             age = f.age;
@@ -132,6 +138,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Family_member(Family_member_field, Activities, Age, Id_family) VALUES ('{0}', '{1}', '{2}', '{3}')", family_member, activities, age, Id_family);
@@ -143,6 +150,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = String.Format(@"SELECT t1.Family_member_field as 'Family memder', t1.Activities as 'Activities', t1.Id_family_member as 'Id_family_member', t1.Age as 'Age', t2.Surname as 'Surname' FROM Family t2 INNER JOIN Family_member t1 ON t1.Id_family=t2.Id_family WHERE t2.Id_family = '{0}'", Id_family);
             //string str = String.Format(@"SELECT Family_member_field, Activities, Age, Id_family_member FROM Family_member WHERE Id_family = '{0}'", Id_family);
             SqlCommand cm = new SqlCommand(str, cn);
@@ -166,6 +174,7 @@ namespace FilingRequestInBank
             f.ShowDialog();
             if (!f.access)
                 return;
+                
             family_member = f.family_member;
             activities = f.activities;
             age = f.age;
@@ -180,6 +189,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_family_member = (int)dataGridView1.CurrentRow.Cells[2].Value;
@@ -194,6 +204,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = String.Format(@"SELECT t1.Family_member_field as 'Family memder', t1.Activities as 'Activities', t1.Id_family_member as 'Id_family_member', t1.Age as 'Age', t2.Surname as 'Surname' FROM Family t2 INNER JOIN Family_member t1 ON t1.Id_family=t2.Id_family WHERE t2.Id_family = '{0}'", Id_family);
             //string str = String.Format(@"SELECT Family_member_field, Activities, Age, Id_family_member FROM Family_member WHERE Id_family = '{0}'", Id_family);
             SqlCommand cm = new SqlCommand(str, cn);
@@ -221,6 +232,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_family_member = (int)dataGridView1.CurrentRow.Cells[2].Value;
@@ -234,6 +246,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = String.Format(@"SELECT t1.Family_member_field as 'Family memder', t1.Activities as 'Activities', t1.Id_family_member as 'Id_family_member', t1.Age as 'Age', t2.Surname as 'Surname' FROM Family t2 INNER JOIN Family_member t1 ON t1.Id_family=t2.Id_family WHERE t2.Id_family = '{0}'", Id_family);
             //string str = String.Format(@"SELECT Family_member_field, Activities, Age, Id_family_member FROM Family_member WHERE Id_family = '{0}'", Id_family);
             SqlCommand cm = new SqlCommand(str, cn);
@@ -285,6 +298,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Request(Job, Salary, Contact, Id_personal, Id_manager, Id_service, Id_family) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}')", job, salary, contact, Id_personal, Id_manager, Id_service, Id_family);
@@ -296,6 +310,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             cn.Close();
             MessageBox.Show("Заявка успешно отправлена на рассмотрение", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
