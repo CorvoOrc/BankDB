@@ -22,9 +22,11 @@ namespace FilingRequestInBank
         private string name, adds, telephone, website, description;
         private int Id_partner;
         private int Id_bank;
+        
         public Partner()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -56,6 +58,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             name = dialog.name;
             adds = dialog.adds;
             telephone = dialog.adds;
@@ -73,6 +76,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Partner(Name, Adds, Telephone, Website, Description) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", name, adds, telephone, website, description);
@@ -84,6 +88,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Name, Adds, Telephone, Website, Description, Id_partner FROM Partner";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
@@ -96,6 +101,7 @@ namespace FilingRequestInBank
             //Id_partner = bind.Count;
             int count = bind.Count;
             Id_partner = (int)dataset.Tables[0].Rows[count-1].ItemArray[5];
+            
                 try
                 {
                     string strSql2 = String.Format(@"INSERT INTO ReferBP(Id_bank, Id_partner) VALUES ('{0}', '{1}')", Id_bank, Id_partner);
@@ -126,6 +132,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             name = dialog.name;
             adds = dialog.adds;
             telephone = dialog.adds;
@@ -143,6 +150,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {//SELECT Name, Adds, Telephone, Website, Description, Id_partner FROM Partner
                 Id_partner = (int)dataGridView1.CurrentRow.Cells[5].Value;
@@ -157,6 +165,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Name, Adds, Telephone, Website, Description, Id_partner FROM Partner";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
@@ -185,9 +194,9 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
-                //DELETE FROM emails WHERE id='2';
                 string strSql = String.Format(@"DELETE FROM Partner WHERE Id_partner = '{0}'", Id_partner);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 cmd.ExecuteNonQuery();
@@ -197,9 +206,9 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             try
             {
-                //DELETE FROM emails WHERE id='2';
                 string strSql = String.Format(@"DELETE FROM ReferBP WHERE Id_partner = '{0}'", Id_partner);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 cmd.ExecuteNonQuery();
@@ -209,6 +218,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = "SELECT Name, Adds, Telephone, Website, Description, Id_partner FROM Partner";
             SqlCommand cm = new SqlCommand(str, cn);
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
