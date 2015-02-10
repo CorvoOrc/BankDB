@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private DataSet dataset = new DataSet();
         public int Id_bank, Id_service;
         public string name;
+        
         public Service_client()
         {
             InitializeComponent();
+            
             FileInfo fi1 = new FileInfo("bank.txt");
             using (StreamReader sr = fi1.OpenText())
             {
@@ -29,6 +31,7 @@ namespace FilingRequestInBank
                 sr.Close();
                 Id_bank = Convert.ToInt32(s);
             }
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -41,6 +44,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 //"SELECT Name, MinRequirement, Description FROM Service WHERE Id_bank = '{0}'"
                 string strSql = String.Format(@"SELECT Name, MinRequirement, Description, Id_service FROM Service WHERE Id_bank = '{0}'", Id_bank);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
@@ -66,11 +70,13 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             if (dataGridView1.CurrentRow == null)
             {
                 MessageBox.Show(@"Нет Услуг для выбора!Обратитесь к администрации за помощью", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             button2.Visible = true;
             label3.Visible = true;
             label4.Visible = true;
