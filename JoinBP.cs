@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private BindingSource bind1 = new BindingSource();
         private DataSet dataset1 = new DataSet();
         public int Id_bank, Id_partner;
+        
         public JoinBP()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -66,8 +68,10 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Выберите Партнера для привязки!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             Id_bank = (int)dataGridView1.CurrentRow.Cells[6].Value;
             Id_partner = (int)dataGridView2.CurrentRow.Cells[5].Value;
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
