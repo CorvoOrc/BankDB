@@ -16,6 +16,7 @@ namespace FilingRequestInBank
         private BindingSource bind = new BindingSource();
         private DataSet dataset = new DataSet();
         private string job;
+        
         public Query4()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace FilingRequestInBank
                 dataGridView1.Visible = false;
                 return;
             }
+            
             label3.Visible = true;
             dataGridView1.Visible = true;
 
@@ -46,6 +48,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = String.Format(@"SELECT t1.Job as 'Job', t2.Surname as 'Surname', t2.Name as 'Name', t2.Patronymic as 'Patronymic' FROM Personal t2 INNER JOIN Request t1 ON t1.Id_personal=t2.Id_personal WHERE t1.Job = '{0}'", job);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
