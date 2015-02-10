@@ -17,9 +17,11 @@ namespace FilingRequestInBank
         private DataSet dataset = new DataSet();
         private string name, viewbank, history, adds, telephone, website;
         private int Id_bank;
+        
         public Bank()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -37,6 +39,7 @@ namespace FilingRequestInBank
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataset);
                 cn.Close();
+                
                 dataGridView1.AutoGenerateColumns = true;
                 bind.DataSource = dataset.Tables[0];
                 dataGridView1.DataSource = bind;
@@ -51,6 +54,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             name = dialog.name;
             viewbank = dialog.viewbank;
             history = dialog.history;
@@ -108,7 +112,7 @@ namespace FilingRequestInBank
             try
             {
                 Id_bank = (int)dataGridView1.CurrentRow.Cells[6].Value;
-                //DELETE FROM emails WHERE id='2';
+
                 string strSql = String.Format(@"DELETE FROM Bank WHERE Id_bank = '{0}'", Id_bank);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 cmd.ExecuteNonQuery();
@@ -120,7 +124,6 @@ namespace FilingRequestInBank
             }
             try
             {
-                //DELETE FROM emails WHERE id='2';
                 string strSql1 = String.Format(@"DELETE FROM ReferBP WHERE Id_bank = '{0}'", Id_bank);
                 SqlCommand cmd1 = new SqlCommand(strSql1, cn);
                 cmd1.ExecuteNonQuery();
