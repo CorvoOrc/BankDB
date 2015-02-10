@@ -19,9 +19,11 @@ namespace FilingRequestInBank
         private BindingSource bind = new BindingSource();
         private DataSet dataset = new DataSet();
         public bool access = false;
+        
         public Manager_create()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -60,6 +62,7 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Не выбран Банк!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
             Id_bank = (int)dataGridView1.CurrentRow.Cells[6].Value;
 
             if (surname == "")
