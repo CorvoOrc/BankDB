@@ -18,6 +18,7 @@ namespace FilingRequestInBank
         private string surname, name, patronymic, telephone, sex, birthday;
         private int age;
         public int Id_personal;
+        
         public Personal_client()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace FilingRequestInBank
 
             if (!f.access)
                 return;
+                
             surname = f.surname;
             name = f.name;
             patronymic = f.patronymic;
@@ -48,6 +50,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Personal(Surname, Name, Patronymic, Telephone, Age, Sex, Birthday) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')", surname, name, patronymic, telephone, age, sex, birthday);
@@ -59,6 +62,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             button1.Visible = false;
             button2.Visible = true;
             button3.Visible = true;
@@ -83,6 +87,7 @@ namespace FilingRequestInBank
 
             if (!f.access)
                 return;
+                
             surname = f.surname;
             name = f.name;
             patronymic = f.patronymic;
@@ -101,6 +106,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"UPDATE Personal SET 
@@ -114,6 +120,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             label1.Text = "Добро пожаловать, " + surname + " " + name + "!";
         }
 
