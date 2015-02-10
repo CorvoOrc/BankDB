@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         public string name, adds, telephone, website, description;
         public int Id_bank;
         public bool access;
+        
         public Partner_create()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -33,6 +35,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Name, ViewBank, History, Adds, Telephone, Website, Id_bank FROM Bank";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -60,6 +63,7 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Не выбран Банк!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
             Id_bank = (int)dataGridView1.CurrentRow.Cells[6].Value;
 
             if (name == "")
