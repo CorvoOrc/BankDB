@@ -14,6 +14,7 @@ namespace FilingRequestInBank
         public string family_member, activities;
         public int age;
         public bool access=false;
+        
         public Family()
         {
             InitializeComponent();
