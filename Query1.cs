@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private BindingSource bind1 = new BindingSource();
         private DataSet dataset1 = new DataSet();
         private int Id_manager;
+        
         public Query1()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -33,6 +35,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Surname, Name, Patronymic, Age, Id_manager FROM Manager";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -58,6 +61,7 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             try
             {
                 Id_manager = (int)dataGridView1.CurrentRow.Cells[4].Value;
