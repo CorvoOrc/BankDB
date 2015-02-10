@@ -19,9 +19,11 @@ namespace FilingRequestInBank
         private BindingSource bind1 = new BindingSource();
         private DataSet dataset1 = new DataSet();
         public int Id_bank;
+        
         public Partner_client()
         {
             InitializeComponent();
+            
             FileInfo fi1 = new FileInfo("bank.txt");
             using (StreamReader sr = fi1.OpenText())
             {
@@ -30,6 +32,7 @@ namespace FilingRequestInBank
                 sr.Close();
                 Id_bank = Convert.ToInt32(s);
             }
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -42,6 +45,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = String.Format(@"SELECT Id_partner FROM ReferBP WHERE Id_bank='{0}'", Id_bank);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -58,6 +62,7 @@ namespace FilingRequestInBank
                    adapter.SelectCommand = cmd;
                    adapter.Fill(dataset1);
                 }
+                
                 try
                 {
                     bind1.DataSource = dataset1.Tables[0];
