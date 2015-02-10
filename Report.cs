@@ -31,6 +31,7 @@ namespace FilingRequestInBank
         public Report()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -43,6 +44,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday FROM Personal";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
