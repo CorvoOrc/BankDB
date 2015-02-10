@@ -16,6 +16,7 @@ namespace FilingRequestInBank
         private BindingSource bind = new BindingSource();
         private DataSet dataset = new DataSet();
         private string name;
+        
         public Query5()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace FilingRequestInBank
                 dataGridView1.Visible = false;
                 return;
             }
+            
             label3.Visible = true;
             dataGridView1.Visible = true;
 
@@ -46,6 +48,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = String.Format(@"SELECT t1.Name as 'NameService', t1.MinRequirement as 'MinRequirement', t1.Description as 'Description', t2.Name as 'NameBank' FROM Bank t2 INNER JOIN Service t1 ON t1.Id_bank=t2.Id_bank WHERE t2.Name = '{0}'", name);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
