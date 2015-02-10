@@ -12,6 +12,7 @@ namespace FilingRequestInBank
     public partial class Question : Form
     {
         public bool access = false;
+        
         public Question()
         {
             InitializeComponent();
