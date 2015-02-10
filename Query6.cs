@@ -16,6 +16,7 @@ namespace FilingRequestInBank
         private BindingSource bind = new BindingSource();
         private DataSet dataset = new DataSet();
         private int age;
+        
         public Query6()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = String.Format(@"SELECT Surname, Name, Patronymic, Telephone, Age, Sex, Birthday FROM Personal WHERE Age>='{0}'", age);
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
