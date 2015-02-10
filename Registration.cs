@@ -17,6 +17,7 @@ namespace FilingRequestInBank
         private DataSet dataset = new DataSet();
         public string login;
         public string password;
+        
         public Registration()
         {
             InitializeComponent();
@@ -49,6 +50,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = "SELECT Login FROM Account";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -63,6 +65,7 @@ namespace FilingRequestInBank
                         return;
                     }
                 }
+                
                 try
                 {
                     string strSql1 = String.Format(@"INSERT INTO Account(Login, Password) VALUES ('{0}', '{1}')", login, password);
@@ -74,8 +77,10 @@ namespace FilingRequestInBank
                     MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 cn.Close();
             }
+            
             MessageBox.Show(@"Регистрация успешно завершена!", @"Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
