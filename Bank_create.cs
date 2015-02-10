@@ -13,6 +13,7 @@ namespace FilingRequestInBank
     {
         public string name, viewbank, history, adds, telephone, website;
         public bool access=false;
+        
         public Bank_create()
         {
             InitializeComponent();
