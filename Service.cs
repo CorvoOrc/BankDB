@@ -17,9 +17,11 @@ namespace FilingRequestInBank
         private DataSet dataset = new DataSet();
         private string name, minrequi, description;
         private int Id_bank, Id_service;
+        
         public Service()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -32,6 +34,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = @"SELECT t1.Name as 'Name', t1.MinRequirement as 'Min Requirement', t1.Description as 'Description', t1.Id_service as 'Id_service', t2.Name as 'Name Bank' FROM Bank t2 INNER JOIN Service t1 ON t1.Id_bank=t2.Id_bank";
                 //string strSql = "SELECT Name, MinRequirement, Description, Id_bank, Id_service FROM Service";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
@@ -53,6 +56,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             name = dialog.name;
             minrequi = dialog.minrequi;
             description = dialog.description;
@@ -68,6 +72,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 string strSql = String.Format(@"INSERT INTO Service(Name, MinRequirement, Description, Id_bank) VALUES ('{0}', '{1}', '{2}', '{3}')", name, minrequi, description, Id_bank);
@@ -79,6 +84,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             //string str = "SELECT Name, MinRequirement, Description, Id_bank, Id_service FROM Service";
             string str = @"SELECT t1.Name as 'Name', t1.MinRequirement as 'Min Requirement', t1.Description as 'Description', t1.Id_service as 'Id_service', t2.Name as 'Name Bank' FROM Bank t2 INNER JOIN Service t1 ON t1.Id_bank=t2.Id_bank";
             SqlCommand cm = new SqlCommand(str, cn);
@@ -98,6 +104,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             name = dialog.name;
             minrequi = dialog.minrequi;
             description = dialog.description;
@@ -111,6 +118,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_service = (int)dataGridView1.CurrentRow.Cells[3].Value;
@@ -124,6 +132,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             //string str = "SELECT Name, MinRequirement, Description, Id_bank, Id_service FROM Service";
             string str = @"SELECT t1.Name as 'Name', t1.MinRequirement as 'Min Requirement', t1.Description as 'Description', t1.Id_service as 'Id_service', t2.Name as 'Name Bank' FROM Bank t2 INNER JOIN Service t1 ON t1.Id_bank=t2.Id_bank";
             SqlCommand cm = new SqlCommand(str, cn);
@@ -151,6 +160,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_service = (int)dataGridView1.CurrentRow.Cells[3].Value;
@@ -163,6 +173,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             //string str = "SELECT Name, MinRequirement, Description, Id_bank, Id_service FROM Service";
             string str = @"SELECT t1.Name as 'Name', t1.MinRequirement as 'Min Requirement', t1.Description as 'Description', t1.Id_service as 'Id_service', t2.Name as 'Name Bank' FROM Bank t2 INNER JOIN Service t1 ON t1.Id_bank=t2.Id_bank";
             SqlCommand cm = new SqlCommand(str, cn);
