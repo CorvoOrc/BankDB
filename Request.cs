@@ -18,9 +18,11 @@ namespace FilingRequestInBank
         private DataSet dataset = new DataSet();
         private string job, salary, contact;
         private int Id_request, Id_personal, Id_meneger, Id_service;
+        
         public Request()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -33,6 +35,7 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = @"SELECT t1.Job as 'Job', t1.Salary as 'Salary', t1.Contact as 'Contact',  t1.Id_personal as 'Id_personal', t1.Id_manager as 'Id_manager', 
                 t1.Id_service as 'Id_service', t1.Id_request as 'Id_request', t2.Surname as 'Surname' FROM Personal t2 INNER JOIN Request t1 ON t1.Id_personal=t2.Id_personal";
                 //string strSql = "SELECT Job, Salary, Contact, Id_personal, Id_manager, Id_service, Id_request FROM Request";
@@ -57,6 +60,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             job = dialog.job;
             salary = dialog.salary;
             contact = dialog.contact;
@@ -74,6 +78,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 //"SELECT Job, Salary, Contact, Family, Id_personal, Id_manager, Id_service, Id_request FROM Request"
@@ -86,6 +91,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = @"SELECT t1.Job as 'Job', t1.Salary as 'Salary', t1.Contact as 'Contact',  t1.Id_personal as 'Id_personal', t1.Id_manager as 'Id_manager', 
                 t1.Id_service as 'Id_service', t1.Id_request as 'Id_request', t2.Surname as 'Surname' FROM Personal t2 INNER JOIN Request t1 ON t1.Id_personal=t2.Id_personal";
             //string str = "SELECT Job, Salary, Contact, Id_personal, Id_manager, Id_service, Id_request FROM Request";
@@ -114,6 +120,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_request = (int)dataGridView1.CurrentRow.Cells[6].Value;
@@ -126,6 +133,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = @"SELECT t1.Job as 'Job', t1.Salary as 'Salary', t1.Contact as 'Contact',  t1.Id_personal as 'Id_personal', t1.Id_manager as 'Id_manager', 
                 t1.Id_service as 'Id_service', t1.Id_request as 'Id_request', t2.Surname as 'Surname' FROM Personal t2 INNER JOIN Request t1 ON t1.Id_personal=t2.Id_personal";
             //string str = "SELECT Job, Salary, Contact, Id_personal, Id_manager, Id_service, Id_request FROM Request";
@@ -146,6 +154,7 @@ namespace FilingRequestInBank
 
             if (!dialog.access)
                 return;
+                
             job = dialog.job;
             salary = dialog.salary;
             contact = dialog.contact;
@@ -163,6 +172,7 @@ namespace FilingRequestInBank
             {
                 MessageBox.Show(@"Нет соединения с базой данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             try
             {
                 Id_request = (int)dataGridView1.CurrentRow.Cells[6].Value;
@@ -176,6 +186,7 @@ namespace FilingRequestInBank
                 MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             string str = @"SELECT t1.Job as 'Job', t1.Salary as 'Salary', t1.Contact as 'Contact',  t1.Id_personal as 'Id_personal', t1.Id_manager as 'Id_manager', 
                 t1.Id_service as 'Id_service', t1.Id_request as 'Id_request', t2.Surname as 'Surname' FROM Personal t2 INNER JOIN Request t1 ON t1.Id_personal=t2.Id_personal";
             //string str = "SELECT Job, Salary, Contact, Id_personal, Id_manager, Id_service, Id_request FROM Request";
@@ -198,6 +209,7 @@ namespace FilingRequestInBank
                 sw.WriteLine(Id_request.ToString());
                 sw.Close();
             }
+            
             Family_member dialog = new Family_member();
             dialog.ShowDialog();
         }
