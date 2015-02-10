@@ -9,9 +9,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 
-
-
-
 namespace FilingRequestInBank
 {
     public partial class Form1 : Form
@@ -19,6 +16,7 @@ namespace FilingRequestInBank
         private string address = @"Data Source=(local)\SQLEXPRESS;AttachDbFilename=\database.mdf;Initial Catalog=database;Integrated Security=True;Connect Timeout=50;User Instance=True";
         public bool acc = false;
         public int Id_personalGl, Id_bankGl, Id_serviceGl, Id_managerGl, Id_requestGl;
+        
         public Form1()
         {
             InitializeComponent();
@@ -34,8 +32,10 @@ namespace FilingRequestInBank
                     MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
                 string strSql = @"SELECT * FROM information_schema.tables WHERE Table_type='BASE TABLE' AND TABLE_NAME='Personal'";
                 SqlCommand cmd = new SqlCommand(strSql, cn);
+                
                 using (SqlDataReader dread = cmd.ExecuteReader())
                 {
                     if (!dread.HasRows)
@@ -143,29 +143,27 @@ namespace FilingRequestInBank
                         {
                             cn.Close();
                         }
-
                     }
                 }
-
             }
         }
 
         private void банковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Personal f = new Personal();
-            f.ShowDialog();
+            Personal personalDialog = new Personal();
+            personalDialog.ShowDialog();
         }
 
         private void банковToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Bank dialog = new Bank();
-            dialog.ShowDialog();
+            Bank bankDialog = new Bank();
+            bankDialog.ShowDialog();
         }
 
         private void партнеровToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Partner dialog = new Partner();
-            dialog.ShowDialog();
+            Partner partnerDialog = new Partner();
+            partnerDialog.ShowDialog();
         }
 
         public void оформитьЗаявкуToolStripMenuItem_Click(object sender, EventArgs e)
