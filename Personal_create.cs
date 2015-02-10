@@ -18,6 +18,7 @@ namespace FilingRequestInBank
         //public string address = @"Data Source=(local)\SQLEXPRESS;AttachDbFilename=C:\Users\Tex\Documents\database.mdf;Initial Catalog=database;Integrated Security=True;Connect Timeout=50;User Instance=True";
         //public BindingSource bind = new BindingSource();
         //public DataSet dataset = new DataSet();
+        
         public Personal_create()
         {
             InitializeComponent();
