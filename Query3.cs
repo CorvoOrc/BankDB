@@ -20,9 +20,11 @@ namespace FilingRequestInBank
         private BindingSource bind2 = new BindingSource();
         private DataSet dataset2 = new DataSet();
         private int Id_bank;
+        
         public Query3()
         {
             InitializeComponent();
+            
             using (SqlConnection cn = new System.Data.SqlClient.SqlConnection())
             {
                 cn.ConnectionString = address;
@@ -62,6 +64,7 @@ namespace FilingRequestInBank
                 MessageBox.Show(@"Нет соединения с базой данных. Повторите запрос позднее!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             Id_bank = (int)dataGridView1.CurrentRow.Cells[6].Value;
             string strSql = String.Format(@"SELECT Id_partner FROM ReferBP WHERE Id_bank='{0}'", Id_bank);
             SqlCommand cmd = new SqlCommand(strSql, cn);
